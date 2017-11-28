@@ -105,7 +105,8 @@ class UniversityController extends Controller
      */
     public function show($id)
     {
-        //
+        $university = DB::select('SELECT * FROM university natural join location where uid = :id', ['id' => $id]);
+        return view('shows.collegeTemplate')->with('university',$university);
     }
 
     /**

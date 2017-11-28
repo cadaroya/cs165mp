@@ -126,7 +126,8 @@ class ScholarshipsController extends Controller
      */
     public function show($id)
     {
-        //
+        $scholarship = DB::select('SELECT * FROM scholarship A natural join scholarship_university B natural join university C where A.sid = :id', ['id' => $id]);
+        return view('shows.scholarshipTemplate')->with('scholarship',$scholarship);
     }
 
     /**
