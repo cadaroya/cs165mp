@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Scholarship;
+use App\Models\University;
+use App\Models\Program;
 use DB;
 
 class ScholarshipsController extends Controller
@@ -29,19 +31,28 @@ class ScholarshipsController extends Controller
     public function byCollege()
     {
         $var = "College";
-        return view('shows.byScholarship')->with('var', $var);
+        $dropdown = University::pluck('uname', 'uname');
+        $dropdown = $dropdown->unique();
+
+        return view('shows.byScholarship',['dropdown' => $dropdown])->with('var', $var);
     }
 
     public function byProgram()
     {
         $var = "Program";
-        return view('shows.byScholarship')->with('var', $var);
+        $dropdown = Program::pluck('pname', 'pname');
+        $dropdown = $dropdown->unique();
+
+        return view('shows.byScholarship', ['dropdown' => $dropdown])->with('var', $var);
     }
 
     public function byLevel()
     {
         $var = "Level";
-        return view('shows.byScholarship')->with('var', $var);
+        $dropdown = Scholarship::pluck('level', 'level');
+        $dropdown = $dropdown->unique();
+
+        return view('shows.byScholarship', ['dropdown' => $dropdown])->with('var', $var);
     }
 
     /**
@@ -62,7 +73,49 @@ class ScholarshipsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Retrieve Button pressed
+        $var = strtolower($request->input('var'));
+
+        // Validate if the user filled the form or not
+        $this->validate($request, [
+            $var => 'required',
+        ]);
+
+        // Result
+        $name = $request->input('name');
+        $college = $request->input('college');
+        $program = $request->input('program');
+        $level = $request->input('level');
+
+
+        if(strlen($name) > 0)
+            $results = DB::select('SELECT * FROM Scholarship WHERE sname = :sname', ['sname' => $name]);
+        elseif(strlen($college) > 0)
+            $results = DB::select('SELECT A.sid, A.sname, A.sex, A.age, A.year, A.semester, A.level, A.GWA, A.maxgrade, A.cid
+            FROM (University U LEFT JOIN Scholarship_University SU ON U.uid = SU.uid) NATURAL JOIN Scholarship A
+            WHERE U.uname = :uname
+            UNION
+            SELECT *
+            FROM Scholarship
+            WHERE sid NOT IN (SELECT sid FROM Scholarship_University)', ['uname' => $college]);
+        elseif(strlen($program) > 0)
+            $results = DB::select('SELECT * FROM
+            (SELECT S.sid, S.sname, S.sex, S.age, S.year, S.semester, S.level, S.GWA, S.maxgrade, S.cid
+            FROM (Program P LEFT JOIN Scholarship_Program SP ON P.pid = SP.pid) NATURAL JOIN Scholarship S  
+            WHERE P.pname = :program or P.pid IS NULL
+            UNION
+            SELECT DISTINCT S.sid, S.sname, S.sex, S.age, S.year, S.semester, S.level, S.GWA, S.maxgrade, S.cid
+            FROM (Program P LEFT JOIN Scholarship_Program SP ON P.field = SP.field) NATURAL JOIN Scholarship S
+            WHERE P.pname = :program2 AND (P.field = SP.field)
+            UNION 
+            SELECT * 
+            FROM Scholarship
+            WHERE sid NOT IN (SELECT sid FROM Scholarship_Program)) PROGRAMSEARCH
+            ORDER BY PROGRAMSEARCH.sid;', ['program' => $program, 'program2' => $program]);
+        elseif(strlen($level) > 0)
+            $results = DB::select('SELECT * FROM Scholarship WHERE level = :yrlevel or level IS NULL', ['yrlevel' => $level]);
+
+        return view('shows.resultScholarship', ['results' => $results]);
     }
 
     /**

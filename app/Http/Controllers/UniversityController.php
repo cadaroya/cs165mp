@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Input;
 use App\Models\University;
+use App\Models\Location;
 use DB;
 
 class UniversityController extends Controller
@@ -28,19 +30,28 @@ class UniversityController extends Controller
     public function byRegion()
     {
         $var = "Region";
-        return view('shows.byCollege')->with('var', $var);
+        $dropdown = Location::pluck('region', 'region');
+        $dropdown = $dropdown->unique();
+
+        return view('shows.byCollege', ['dropdown' => $dropdown])->with('var', $var);
     }
 
     public function byProvince()
     {
         $var = "Province";
-        return view('shows.byCollege')->with('var', $var);
+        $dropdown = Location::pluck('province', 'province');
+        $dropdown = $dropdown->unique();
+        
+        return view('shows.byCollege', ['dropdown' => $dropdown])->with('var', $var);
     }
 
     public function byCity()
     {
         $var = "City";
-        return view('shows.byCollege')->with('var', $var);
+        $dropdown = Location::pluck('city', 'city');
+        $dropdown = $dropdown->unique();
+
+        return view('shows.byCollege', ['dropdown' => $dropdown])->with('var', $var);
     }
     /**
      * Show the form for creating a new resource.
@@ -60,6 +71,14 @@ class UniversityController extends Controller
      */
     public function store(Request $request)
     {
+        // Retrieve Button pressed
+        $var = strtolower($request->input('var'));
+
+        // Validate if the user filled the form or not
+        $this->validate($request, [
+            $var => 'required',
+        ]);
+
         // Result
         $name = $request->input('name');
         $region = $request->input('region');
