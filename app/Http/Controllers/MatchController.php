@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Models\University;
+use App\Models\Program;
 
 class MatchController extends Controller
 {
@@ -14,7 +16,10 @@ class MatchController extends Controller
      */
     public function index()
     {
-        return view('pages.match');
+        
+        $college_dropdown = University::orderBy('uname')->pluck('uname', 'uname');
+        $course_dropdown = Program::orderBy('pname')->pluck('pname', 'pname');
+        return view('pages.match', ['college_dropdown' => $college_dropdown, 'course_dropdown' => $course_dropdown]);
     }
 
     /**
@@ -63,7 +68,7 @@ class MatchController extends Controller
             'maxgrade' => 'required',
             'GWA' => 'required',
             'level' => 'required',
-            'field' => 'required',
+         //   'field' => 'required',
             'course' => 'required',
             'university' => 'required'
         ]);
@@ -73,37 +78,27 @@ class MatchController extends Controller
         $age = $request->input('age');
         $year = $request->input('year');
         $semester = $request->input('semester');
-        $level = $request->input('maxgrade');
+        $level = $request->input('level');
         $GWA = $request->input('GWA');
-        $maxgrade = $request->input('level');
-        $field = $request->input('field');
+        $maxgrade = $request->input('maxgrade');
+        //$field = $request->input('field');
         $course = $request->input('course');
         $university = $request->input('university');
-
+        
         // mySQL Query
         $results = DB::select('SELECT DISTINCT *
         FROM
         ((Scholarship_University B NATURAL JOIN University C)  RIGHT JOIN Scholarship A ON A.sid = B.sid)       
         JOIN 
-        ((Scholarship_Program E NATURAL JOIN Program F)  RIGHT JOIN Scholarship D ON D.sid = E.sid)         
+        ((Scholarship_Program E LEFT JOIN Program F ON E.pid = F.pid) RIGHT JOIN Scholarship D ON D.sid = E.sid)         
 
         ON (A.sid = D.sid) 
         WHERE (A.sex IS NULL or A.sex = :A) and (A.age IS NULL or A.age = :B) and (A.year IS NULL or A.year = :C) and 
         (A.semester IS NULL or A.semester = :D) and (A.level IS NULL or A.level = :E) and (A.GWA IS NULL or A.GWA >= :F) and (A.maxgrade IS NULL or A.maxgrade >= :G)
-        and (C.uname IS NULL or C.uname = :H) and (F.pname IS NULL or F.pname = :I)
-
-        UNION
-
-        SELECT DISTINCT *
-        FROM
-        ((Scholarship_University B NATURAL JOIN University C)  RIGHT JOIN Scholarship A ON A.sid = B.sid)      
-        JOIN 
-        ((Scholarship_Program E NATURAL JOIN Program F)  RIGHT JOIN Scholarship D ON D.sid = E.sid)        
-
-        ON (A.sid = D.sid) 
-        WHERE (A.sex IS NULL or A.sex = :A2) and (A.age IS NULL or A.age = :B2) and (A.year IS NULL or A.year = :C2) and 
-        (A.semester IS NULL or A.semester = :D2) and (A.level IS NULL or A.level = :E2) and (A.GWA IS NULL or A.GWA >= :F2) and (A.maxgrade IS NULL or A.maxgrade >= :G2)
-        and (C.uname IS NULL or C.uname = :H2) and (F.field IS NULL or F.field = :J)', [
+        and (C.uname IS NULL or C.uname = :H) and (F.pname = :I or E.spid IS NULL or
+        (E.field IN (SELECT field FROM program WHERE pname = :I2))
+        )' ,
+        [
         'A' => $sex,
         'B' => $age,
         'C' => $year,
@@ -113,22 +108,14 @@ class MatchController extends Controller
         'G' => $maxgrade,
         'H' => $university,
         'I' => $course,
-        'J' => $field,
-
-        'A2' => $sex,
-        'B2' => $age,
-        'C2' => $year,
-        'D2' => $semester,
-        'E2' => $level,
-        'F2' => $GWA,
-        'G2' => $maxgrade,
-        'H2' => $university,
+        'I2' => $course
+        //'J' => $field,
         ]);
         
         return view('shows.result', ['results' => $results]);
     }
-
-
+    
+    
     /**
      * Display the specified resource.
      *

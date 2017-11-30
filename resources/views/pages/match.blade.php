@@ -27,24 +27,11 @@
                 {{Form::label('maxgrade', 'Lowest Grade (in all subjects for this year)')}}
                 {{Form::text('maxgrade', '', ['class' => 'form-control', 'placeholder' => 'Enter'])}}
 
-                {{Form::label('field', 'Field of Study')}}
-                {{Form::text('field', '', ['class' => 'form-control', 'placeholder' => 'Enter'])}}
+                {{Form::label('course', 'Program/Course')}}</br>
+                {{Form::select('course', $course_dropdown , null, ['placeholder' => 'Choose course...'])}} </br>
 
-                {{Form::label('course', 'Program/Course')}}
-                {{Form::text('course', '', ['class' => 'form-control', 'placeholder' => 'Enter'])}}
-
-                {{Form::label('university', 'University/College')}}
-                {{Form::text('university', '', ['class' => 'form-control', 'placeholder' => 'Enter'])}}
-
-                <!-- Drop down -->
-                {{Form::label('sample1', 'sample1')}}
-                {{Form::select('animal', [
-                    'Cats' => ['leopard' => 'Leopard'],
-                    'Dogs' => ['spaniel' => 'Spaniel'],
-                ])}}
-
-                {{Form::label('sample3', 'sample3')}}
-                {{Form::select('size', ['L' => 'Large', 'S' => 'Small'], null, ['placeholder' => 'Pick a size...'])}}
+                {{Form::label('university', 'University/College')}}</br>
+                {{Form::select('university', $college_dropdown , null, ['placeholder' => 'Choose college...'])}} </br>
             </div>
 
             {{Form::submit('Submit', ['class' => 'btn btn-default'])}}

@@ -86,7 +86,7 @@ class UniversityController extends Controller
         $city = $request->input('city');
 
         if(strlen($name) > 0)
-            $results = DB::select('SELECT * from university where uname = :univ_name', ['univ_name' => $name]);
+            $results = DB::select('SELECT * from university where uname LIKE CONCAT("%",:univ_name,"%")', ['univ_name' => $name]);
         elseif(strlen($region) > 0)
             $results = DB::select('SELECT * from University natural join Location where region = :univ_region', ['univ_region' => $region]);
         elseif(strlen($province) > 0)

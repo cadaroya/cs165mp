@@ -88,8 +88,8 @@ class ScholarshipsController extends Controller
         $level = $request->input('level');
 
 
-        if(strlen($name) > 0)
-            $results = DB::select('SELECT * FROM Scholarship WHERE sname = :sname', ['sname' => $name]);
+        if(strlen($name) > 0){
+            $results = DB::select('SELECT * FROM Scholarship WHERE sname LIKE CONCAT("%",:sname,"%")', ['sname' => $name]);}
         elseif(strlen($college) > 0)
             $results = DB::select('SELECT A.sid, A.sname, A.sex, A.age, A.year, A.semester, A.level, A.GWA, A.maxgrade, A.cid
             FROM (University U LEFT JOIN Scholarship_University SU ON U.uid = SU.uid) NATURAL JOIN Scholarship A
