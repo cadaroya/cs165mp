@@ -35,6 +35,7 @@ Route::get('/colleges/byProvince', 'UniversityController@byProvince');
 Route::get('/colleges/byCity', 'UniversityController@byCity');
 
 
+
 //Resource Controllers
 Route:: resource('scholarships', 'ScholarshipsController');
 Route:: resource('colleges','UniversityController');

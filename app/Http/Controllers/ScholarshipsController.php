@@ -138,7 +138,12 @@ class ScholarshipsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $scholarship = Scholarship::find($id);
+        $college_dropdown = University::orderBy('uname')->pluck('uname', 'uname');
+        $course_dropdown = Program::orderBy('pname')->pluck('pname', 'pname');
+
+        return view('shows.editScholarship', ['college_dropdown' => $college_dropdown, 'course_dropdown' => $course_dropdown, 'scholarship' => $scholarship]);
+        
     }
 
     /**
@@ -150,7 +155,42 @@ class ScholarshipsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Validation 
+        /*
+        $this->validate($request, [
+            'sex' => 'required',
+            'age' => 'required',
+            'year' => 'required',
+            'semester' => 'required',
+            'maxgrade' => 'required',
+            'GWA' => 'required',
+            'level' => 'required',
+        ]);
+        */
+        // Variable Declarations
+        $sex = $request->input('sex');
+        $age = $request->input('age');
+        $year = $request->input('year');
+        $semester = $request->input('semester');
+        $level = $request->input('level');
+        $GWA = $request->input('GWA');
+        $maxgrade = $request->input('maxgrade');
+
+        if($maxgrade != NULL) $maxgrade /=100;
+        if($GWA != NULL) $GWA /=100;
+        
+        
+        // UPDATE SCHOLARSHIP
+        $scholarship = Scholarship::find($id);
+        $scholarship->sex = $sex;
+        $scholarship->year = $year;
+        $scholarship->semester = $semester;
+        $scholarship->level = $level;
+        $scholarship->GWA = $GWA;
+        $scholarship->maxgrade = $maxgrade;
+        $scholarship->save();
+        
+        return redirect('/scholarships')->with('success', 'Update Successful');
     }
 
     /**
