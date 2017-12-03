@@ -13,6 +13,11 @@
                 
                 <a href="#"> <p> Link to their website! </p></a>
                 <a href="/scholarships/{{$s->sid}}/edit"> <p> Edit data </p></a>
+                
+                {!!Form::open(['action' => ['ScholarshipsController@destroy', $s->sid], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                    {{Form::hidden('_method', 'DELETE')}}
+                    {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+                {!!Form::close()!!}
             @endforeach
         </div>
     </div>
