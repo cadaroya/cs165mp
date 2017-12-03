@@ -27,13 +27,14 @@ Route::get('/scholarships/byName', 'ScholarshipsController@byName');
 Route::get('/scholarships/byCollege', 'ScholarshipsController@byCollege');
 Route::get('/scholarships/byProgram', 'ScholarshipsController@byProgram');
 Route::get('/scholarships/byLevel', 'ScholarshipsController@byLevel');
+Route::post('/scholarships/insert', 'ScholarshipsController@insert');
+
 
 // University Shows
 Route::get('/colleges/byName', 'UniversityController@byName');
 Route::get('/colleges/byRegion', 'UniversityController@byRegion');
 Route::get('/colleges/byProvince', 'UniversityController@byProvince');
 Route::get('/colleges/byCity', 'UniversityController@byCity');
-
 
 
 //Resource Controllers

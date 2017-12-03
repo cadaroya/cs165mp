@@ -62,7 +62,44 @@ class ScholarshipsController extends Controller
      */
     public function create()
     {
-        //
+        return view('shows.addScholarship');
+    }
+
+    public function insert(Request $request)
+    {
+        $this->validate($request, [
+            'sname' => 'required'
+        ]);
+
+        // Retrieve form inputs
+        $sname = $request->input('sname');
+        $sex = $request->input('sex');
+        $age = $request->input('age');
+        $year = $request->input('year');
+        $semester = $request->input('semester');
+        $level = $request->input('level');
+        $GWA = $request->input('GWA');
+        $maxgrade = $request->input('maxgrade');
+
+        if($maxgrade != NULL) $maxgrade /=100;
+        if($GWA != NULL) $GWA /=100;
+
+        // UPDATE SCHOLARSHIP
+        $scholarship = new Scholarship;
+        $scholarship->sid = NULL;
+        $scholarship->sname = $sname;
+        $scholarship->sex = $sex;
+        $scholarship->year = $year;
+        $scholarship->semester = $semester;
+        $scholarship->level = $level;
+        $scholarship->GWA = $GWA;
+        $scholarship->maxgrade = $maxgrade;
+        $scholarship->cid = NULL;
+        $scholarship->save();
+        
+
+        return redirect('/scholarships')->with('success','Create Successful');
+
     }
 
     /**
