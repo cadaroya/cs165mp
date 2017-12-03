@@ -60,7 +60,29 @@ class UniversityController extends Controller
      */
     public function create()
     {
-        //
+        $location = DB::select('SELECT * FROM location');
+        return view('shows.addCollege', ['location'=> $location]);
+    }
+
+    public function insert(Request $request)
+    {
+        $this->validate($request, [
+            'univ_name' => 'required'
+        ]);
+
+        if(Location::find($request->input('loc_id')) != NULL)
+        {
+            $university = new University;
+            $university->uid = NULL;
+            $university->uname = $request->input('univ_name');
+            $university->location_id = $request->input('loc_id');
+            $university->save();
+
+            return redirect('/colleges')->with('success', 'Update Successful');
+        }
+        else {
+            return redirect('/colleges')->with('success', 'UPDATE FAILED!!! Wrong location');
+        }
     }
 
     /**
@@ -117,7 +139,9 @@ class UniversityController extends Controller
      */
     public function edit($id)
     {
-        //
+        $university = University::find($id);
+        $location = DB::select('SELECT * FROM location');
+        return view('shows.editCollege', ['university' => $university, 'location'=> $location]);
     }
 
     /**
@@ -129,7 +153,20 @@ class UniversityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(Location::find($request->input('loc_id')) != NULL)
+        {
+            $university = University::find($id);
+            if(strlen($request->input('univ_name')) > 0)
+                $university->uname = $request->input('univ_name');
+            
+            $university->location_id = $request->input('loc_id');
+            $university->save();
+
+            return redirect('/colleges')->with('success', 'Update Successful');
+        }
+        else {
+            return redirect('/colleges')->with('success', 'UPDATE FAILED!!! Wrong location');
+        }
     }
 
     /**
@@ -143,6 +180,5 @@ class UniversityController extends Controller
         $univ = University::find($id);
         $univ->delete();
         return redirect('/colleges')->with('success', 'University Deleted');
-        //
     }
 }
