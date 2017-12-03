@@ -67,6 +67,7 @@
 <!-- Footer -->
     <footer class="jumbotron text-center" style ="background-color:#4a4a4a; color:white">
         <p>Made by <a href="/about"> Me</a></p> 
+        <p>See our partner  <a href="/companies"> companies</a></p> </br>
     </footer>
 
 @endsection
