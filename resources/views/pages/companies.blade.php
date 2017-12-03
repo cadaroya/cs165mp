@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1> Companies </h1>
+    <h1 style="margin-left:110px"> Companies </h1>
     <div class="well">
         <a href="/companies/create" class="btn btn-primary"> Add Company </a>
 
