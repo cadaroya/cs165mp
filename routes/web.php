@@ -41,6 +41,7 @@ Route::get('/colleges/byCity', 'UniversityController@byCity');
 Route:: resource('scholarships', 'ScholarshipsController');
 Route:: resource('colleges','UniversityController');
 Route:: resource('match','MatchController');
+Route:: resource('companies','CompanyController');
 
 //Route:: resource('result','MatchController');
 

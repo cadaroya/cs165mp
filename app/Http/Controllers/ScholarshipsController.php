@@ -84,7 +84,7 @@ class ScholarshipsController extends Controller
         if($maxgrade != NULL) $maxgrade /=100;
         if($GWA != NULL) $GWA /=100;
 
-        // UPDATE SCHOLARSHIP
+        // INSERT SCHOLARSHIP
         $scholarship = new Scholarship;
         $scholarship->sid = NULL;
         $scholarship->sname = $sname;
@@ -163,7 +163,7 @@ class ScholarshipsController extends Controller
      */
     public function show($id)
     {
-        $scholarship = DB::select('SELECT * FROM scholarship A natural join scholarship_university B natural join university C where A.sid = :id', ['id' => $id]);
+        $scholarship = DB::select('SELECT A.sid, A.sname, A.sex, A.age, A.year, A.semester, A.level, A.GWA, A.maxgrade, A.cid, C.uname FROM scholarship A left join (scholarship_university B natural join university C) ON A.sid = B.sid where A.sid = :id', ['id' => $id]);
         return view('shows.scholarshipTemplate')->with('scholarship',$scholarship);
     }
 
