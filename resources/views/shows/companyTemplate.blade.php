@@ -12,7 +12,10 @@
                 
                 <a href="#"> <p> Link to their website! </p></a>
                 <a href="/companies/{{$company->cid}}/edit"> <p> Edit data </p></a>
-                
+                {!!Form::open(['action' => ['CompanyController@destroy', $company->cid], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                    {{Form::hidden('_method', 'DELETE')}}
+                    {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+                {!!Form::close()!!}
             
         </div>
     </div>
