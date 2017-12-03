@@ -238,6 +238,9 @@ class ScholarshipsController extends Controller
      */
     public function destroy($id)
     {
+        $scholarship = Scholarship::find($id);
+        $scholarship->delete();
+        return redirect('/scholarships')->with('success', 'Scholarship Deleted');
         //
     }
 }

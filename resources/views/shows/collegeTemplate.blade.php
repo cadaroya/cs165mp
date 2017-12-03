@@ -14,7 +14,10 @@
             <p> Additional stuff you would like to add </p>
             </br>
             <a href="#"> <p> Link to their website! </p></a>
-
+            {!!Form::open(['action' => ['UniversityController@destroy', $s->uid], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                {{Form::hidden('_method', 'DELETE')}}
+                {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+            {!!Form::close()!!}
         </div>
     </div>
 @endsection

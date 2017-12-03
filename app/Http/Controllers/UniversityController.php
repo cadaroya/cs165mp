@@ -140,6 +140,9 @@ class UniversityController extends Controller
      */
     public function destroy($id)
     {
+        $univ = University::find($id);
+        $univ->delete();
+        return redirect('/colleges')->with('success', 'University Deleted');
         //
     }
 }
