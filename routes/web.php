@@ -19,6 +19,7 @@
 Route:: get('/', 'PagesController@index');
 //Route:: get('/scholarships', 'PagesController@scholarships');
 //Route:: get('/colleges', 'PagesController@colleges');
+Route:: get('/companies', 'CompanyController@index');
 Route:: get('/about', 'PagesController@about');
 Route:: post('/colleges/create', 'UniversityController@insert');
 Route:: post('/scholarships/create', 'ScholarshipsController@insert');
@@ -42,6 +43,6 @@ Route::get('/colleges/byCity', 'UniversityController@byCity');
 Route:: resource('scholarships', 'ScholarshipsController');
 Route:: resource('colleges','UniversityController');
 Route:: resource('match','MatchController');
-
+Route:: resource('companies','CompanyController');
 //Route:: resource('result','MatchController');
 
