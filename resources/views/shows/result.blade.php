@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1> Results </h1>
+    <div class="container">
+    <h1 style> Results </h1>
     @if(count($results) > 0)
         @foreach($results as $result)
             <div class="container">
@@ -11,4 +12,5 @@
     @else
         <h3> Sorry no match </h3>
     @endif
+    </div>
 @endsection

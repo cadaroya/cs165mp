@@ -1,4 +1,4 @@
-    <div class="container">
+    <!-- <div class="container"> -->
     {!! Form::open(['action' => 'ScholarshipsController@store', 'method', 'POST']) !!}
 
     {{ Form::hidden('var', $var) }}
@@ -20,4 +20,4 @@
 
     {{Form::submit('Submit', ['class' => 'btn btn-default'])}}
     {!! Form::close() !!}
-    </div>
+    <!-- </div> -->

@@ -2,13 +2,15 @@
 
 @section('content')
     <div class="container">
-        <div class="well">
+        <div class="panel panel-default">
 
             @foreach($university as $s)
-                <h1> {{$s->uname}} </h1>
+            <div class="panel-heading" style="text-weight:bold;background-color:#00aae7;color:white"> <h1> {{$s->uname}} </h1></div>
+            <div class="panel-body">
                 <h4> {{$s->region}} <h4>
                 <h4> {{$s->province}} </h4>
                 <h4> {{$s->city}} </h4>
+            
             @endforeach
 
             <p> Additional stuff you would like to add </p>
@@ -18,6 +20,7 @@
                 {{Form::hidden('_method', 'DELETE')}}
                 {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
             {!!Form::close()!!}
+            </div>
         </div>
     </div>
 @endsection

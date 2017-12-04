@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 style="margin-left:110px"> Colleges </h1>
-    @include('incs.collegebuttons')
+	<div class="container">
+    	<h1> Colleges </h1>
+    	@include('incs.collegebuttons')
+    </div>
 @endsection
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1> Edit Company Information </h1>
+    <h1 style="margin-left:110px;"> Edit Company Information </h1>
     {!! Form::open(['action' => ['CompanyController@update', $company->cid], 'method', 'POST']) !!}
         <div class="container">
             <div class="form-group">

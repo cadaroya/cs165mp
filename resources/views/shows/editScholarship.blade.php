@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1> Edit Scholarship Requirements! </h1>
+    <h1 style="margin-left:110px;"> Edit Scholarship Requirements! </h1>
     {!! Form::open(['action' => ['ScholarshipsController@update', $scholarship->sid], 'method', 'POST']) !!}
         <div class="container">
             <div class="form-group">
