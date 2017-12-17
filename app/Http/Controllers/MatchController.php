@@ -124,7 +124,8 @@ class MatchController extends Controller
      */
     public function show($id)
     {
-        //
+        $scholarship = DB::select('SELECT A.sid, A.sname, A.sex, A.age, A.year, A.semester, A.level, A.GWA, A.maxgrade, A.cid, A.description, A.url, A.imgdir, A.stipend, A.type, C.uname FROM scholarship A left join (scholarship_university B natural join university C) ON A.sid = B.sid where A.sid = :id', ['id' => $id]);
+        return view('shows.scholarshipTemplate')->with('scholarship',$scholarship);
     }
 
     /**

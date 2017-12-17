@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 20 Nov 2017 18:38:00 +0000.
+ * Date: Sun, 17 Dec 2017 07:42:50 +0000.
  */
 
 namespace App\Models;
@@ -22,6 +22,11 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property float $GWA
  * @property float $maxgrade
  * @property int $cid
+ * @property string $description
+ * @property string $url
+ * @property string $imgdir
+ * @property int $stipend
+ * @property string $type
  * 
  * @property \App\Models\Company $company
  * @property \Illuminate\Database\Eloquent\Collection $programs
@@ -41,7 +46,8 @@ class Scholarship extends Eloquent
 		'semester' => 'float',
 		'GWA' => 'float',
 		'maxgrade' => 'float',
-		'cid' => 'int'
+		'cid' => 'int',
+		'stipend' => 'int'
 	];
 
 	protected $fillable = [
@@ -53,7 +59,12 @@ class Scholarship extends Eloquent
 		'level',
 		'GWA',
 		'maxgrade',
-		'cid'
+		'cid',
+		'description',
+		'url',
+		'imgdir',
+		'stipend',
+		'type'
 	];
 
 	public function company()
