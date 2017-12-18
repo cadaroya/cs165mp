@@ -14,10 +14,12 @@
                 </br>
                 <a href="#"> <p> Link to their website! </p></a> 
                 <a href="/colleges/{{$s->uid}}/edit"> <p> Edit data </p></a>
+                <!-- Delete
                 {!!Form::open(['action' => ['UniversityController@destroy', $s->uid], 'method' => 'POST', 'class' => 'pull-right'])!!}
                     {{Form::hidden('_method', 'DELETE')}}
                     {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                 {!!Form::close()!!}
+                -->
             @endforeach
             </div>
         </div>
