@@ -46,3 +46,7 @@ Route:: resource('match','MatchController');
 Route:: resource('companies','CompanyController');
 //Route:: resource('result','MatchController');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
