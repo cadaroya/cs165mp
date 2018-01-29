@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-center"> Fill up the form </h1>
+    <h1 class="text-center"> Fill Out the form </h1>
 
     {!! Form::open(['action' => 'MatchController@store', 'method', 'POST']) !!}
         <div class="container">

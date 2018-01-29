@@ -1,61 +1,71 @@
 @extends('layouts.app')
 
 @section('content')
-
+<link href="https://fonts.googleapis.com/css?family=Scada" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
 
 <!-- First Section -->
 
     <div class="jumbotron text-center" style="background-color:#00aae7;margin-bottom:0;">
         <div class="container">
-            <h1 style="color:white; font-weight:bold">
-                Comprehensive Application for Retrieving List of Scholarships
-            </h1>
-            <h2 style="color:white;">
-                Developing a Real Opportunity for Your Acads
-            </h2>
-            <img src="{{ URL::to('/') }}/images/daroya.png" class="img-responsive img-circle margin" style="display:inline" alt="daroya" width="250" height="250">
-            <h4 style="color:white;">
-                Find scholarships that matches you with App_name
+            <img src="{{ URL::to('/') }}/images/icon.png" class="img-responsive img-circle margin" style="border:5px solid white; display:inline;" alt="daroya" width="250" height="250">
+            </br> </br> </br>
+            <h4 style="font-family: 'Lato', sans-serif; font-size: 3em; color:white;">
+                FIND SCHOLARSHIPS TO FINANCE YOUR EDUCATION
             </h4>
+            <hr>
             <a href="/match" class="btn btn-primary" style="background-color:#f27749;">
-                <h3>
+                <h3 style="font-family: 'Oswald', sans-serif;">
                     Start matching now!
                 </h3>
             </a>
         </div>
     </div>
+<div class="container" >
+    <div class="jumbotron text-center" style="background-color:white; margin-bottom:0">
+        <h2 style="font-family: 'Lato', sans-serif; font-size: 2em;">
+            SKO! IS THE SIMPLEST WAY TO CONNECT STUDENTS WITH SCHOLARSHIPS THEY QUALIFY TO. 
+        </h2>
+    </div>
 
+    <hr>
 <!-- Second Container -->
     <div class="jumbotron text-center" style="background-color:white; margin-bottom:0;">
-        <h2>
-            What Am I?
+        <h2 style="font-family: 'Lato', sans-serif; font-size: 2em;">
+            A GROWING NETWORK OF PARTNER SCHOOLS.
         </h2>
-        <h3>
-            Currently, App_name supports an abundant list of scholarships from universities in metro manila. Expect more partner schools in the future  
-        </h3>
-        <a href="/colleges" class="btn btn-default btn-lg" style="background-color:#00aae7; color:white;">
+        </br>
+        <h4 style="font-family: 'Roboto', sans-serif; font-size: 1.5em;">
+            SKO! supports an abundant list of scholarships from various universities in metro manila.
+        </h4>
+        <a href="/colleges" class="btn btn-default btn-lg" style="font-family: 'Oswald', sans-serif; background-color:#00aae7; color:white;">
            <!-- <span class="glyphicon glyphicon-search"></span> See Current Universities -->
             <img src="{{ URL::to('/') }}/images/whiteglass.png" class="img-responsive" style="display:inline" alt="whiteglass" width="20" height="20"> 
                 See Current Universities
         </a>
     </div>
-
+<hr>
 <!-- Third Container -->
     <div class="jumbotron text-center" style="background-color:white; margin-bottom:0; ">
-        <h2>
-            See all the $$$ scholarships in our database.View them by category depending on your needs
+        <h2 style="font-family: 'Lato', sans-serif; font-size: 2em;">
+            COMPREHENSIVE, UP-TO-DATE DATABASE OF SCHOLARSHIPS 
         </h2>
-        <a href="/scholarships" class="btn btn-default btn-lg" style="background-color:#00aae7; color:white">
+        </br>
+        <h4 style="font-family: 'Roboto', sans-serif; font-size: 1.5em;">
+           Discover our database of scholarships. View them by category depending on your preferences.
+        </h4>
+        <a href="/scholarships" class="btn btn-default btn-lg" style="font-family: 'Oswald', sans-serif; background-color:#00aae7; color:white">
             <!-- <span class="glyphicon glyphicon-search"></span> Browse scholarships -->
-            <img src="{{ URL::to('/') }}/images/whiteglass.png" class="img-responsive" style="display:inline" alt="whiteglass" width="20" height="20"> 
+            <img src="{{ URL::to('/') }}/images/whiteglass.png" class="img-responsive" style="display:inline " alt="whiteglass" width="20" height="20"> 
                 Browse Scholarships
         </a>
     </div>
-
+<hr>
 <!-- Fourth Container -->
     <div class="jumbotron text-center" style="background-color:#157fc3; margin-bottom:0; color:white">
-        <h2>
-            Let app_name take care of finding scholarships that you qualify into
+        <h2 style="font-family: 'Lato', sans-serif; font-size: 2em;">
+            Let SKO! match you with our scholarships.
         </h2>
         <a href="/match" class="btn btn-default btn-lg" style="background-color:#f27749; color:white">
             <!-- <span class="glyphicon glyphicon-search"></span> Start matching -->
@@ -63,7 +73,7 @@
                 Start Matching!
         </a>
     </div>
-
+</div>
 <!-- Footer -->
     <footer class="jumbotron text-center" style ="background-color:#4a4a4a; color:white">
         <p>Made by <a href="/about"> Me</a></p> 
