@@ -20,7 +20,7 @@
 
             <ul class="nav navbar-nav">
              
-              <li ><a href="{{ url('/') }}"> {{ config('app.name', 'SKO!') }} </a> </li>
+              <li ><a href="/">SKO!</a></li>
               <li ><a href="/">HOME</a></li>
               <li ><a href="/scholarships">SCHOLARSHIPS</a></li>
               <li ><a href="/colleges">COLLEGES</a></li>
