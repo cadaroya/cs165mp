@@ -14,12 +14,11 @@
             border-radius:0;
         }
         </style>
-   
-
+        <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
         <title>SKO! Find Matching Scholarships</title>
     </head>
         @include('incs.navbar')
-    <body style="font-family: 'Lato', sans-serif; background:white;" >
+    <body style="font-family: 'Lato', sans-serif; background:white; padding-top:50px;" >
         
         @include('incs.formwarnings')
         @yield('content')
