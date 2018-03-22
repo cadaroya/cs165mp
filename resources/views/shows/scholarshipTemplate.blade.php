@@ -17,14 +17,17 @@
                         @endif
 
                         @if($s->level != NULL)
-                            <h4> For {{$s->level}} standing </h4>
+                            <h4> For {{$s->level}} students </h4>
                         @else
-                            <h4> For any standing </h4>
+                            <h4> For any students </h4>
                         @endif
                         
-                        <h4> ₱{{$s->stipend}}.00/{{$s->type}} </h4>
+                        @if($s->stipend == 0)
+                            <h4> Stipend is based on interest earnings of the fund and is given on {{$s->type}} basis </h4>
+                        @else
+                            <h4> ₱{{$s->stipend}}.00/{{$s->type}} </h4>
+                        @endif
                         <p> {{$s->description}} </p> </br>
-
                         @if($s->url == NULL)
                             <p> Website link is currently unavailable </p>
                         @else

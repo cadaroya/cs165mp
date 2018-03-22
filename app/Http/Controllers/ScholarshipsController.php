@@ -49,8 +49,9 @@ class ScholarshipsController extends Controller
     public function byLevel()
     {
         $var = "Level";
-        $dropdown = Scholarship::pluck('level', 'level');
-        $dropdown = $dropdown->unique();
+        $dropdown = ['freshman' => 'Freshman', 'sophomore' => 'Sophomore', 'junior' => 'Junior', 'senior' => 'Senior', 'graduating' => 'Graduating', 'incoming' => 'Incoming Freshman', 'graduate' => 'Graduate', 'masters' => 'Masters', 'phd' => 'PhD'];
+        //$dropdown = Scholarship::pluck('level', 'level');
+        //$dropdown = $dropdown->unique();
 
         return view('shows.byScholarship', ['dropdown' => $dropdown])->with('var', $var);
     }
@@ -150,7 +151,7 @@ class ScholarshipsController extends Controller
             WHERE sid NOT IN (SELECT sid FROM Scholarship_Program)) PROGRAMSEARCH
             ORDER BY PROGRAMSEARCH.sid;', ['program' => $program, 'program2' => $program]);
         elseif(strlen($level) > 0)
-            $results = DB::select('SELECT * FROM Scholarship WHERE level = :yrlevel or level IS NULL', ['yrlevel' => $level]);
+            $results = DB::select('SELECT * FROM Scholarship WHERE level LIKE CONCAT("%",:yrlevel,"%") or level IS NULL', ['yrlevel' => $level]);
 
         return view('shows.resultScholarship', ['results' => $results]);
     }

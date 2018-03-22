@@ -94,7 +94,7 @@ class MatchController extends Controller
 
         ON (A.sid = D.sid) 
         WHERE (A.sex IS NULL or A.sex = :A) and (A.age IS NULL or A.age = :B) and (A.year IS NULL or A.year = :C) and 
-        (A.semester IS NULL or A.semester = :D) and (A.level IS NULL or A.level = :E) and (A.GWA IS NULL or A.GWA >= :F) and (A.maxgrade IS NULL or A.maxgrade >= :G)
+        (A.semester IS NULL or A.semester = :D) and (A.level IS NULL or A.level LIKE CONCAT("%",:E,"%")) and (A.GWA IS NULL or A.GWA >= :F) and (A.maxgrade IS NULL or A.maxgrade >= :G)
         and (C.uname IS NULL or C.uname = :H) and (F.pname = :I or E.spid IS NULL or
         (E.field IN (SELECT field FROM program WHERE pname = :I2))
         )' ,
