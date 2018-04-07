@@ -21,7 +21,7 @@
             </h2>
             <h3 style="text-align: justify; font-family: 'Roboto', sans-serif;">
                Hi! Although several people helped in completing this project, we are mainly a team of 5 students based on UP Diliman. If you have any questions, problems, or concerns feel free to email any of us.
-                (<a href="mailto:daroyac@gmail.com">Carlos</a>, <a href="mailto:ajsanjoaquin@gmail.com">AJ</a>, <a href="mailto:jadcreyes23@gmail.com ">Jullie</a>, <a href="mailto:julessegismundo@gmail.com ">Jules</a>, <a href="mailto:daroyac@gmail.com">Simon</a>)
+                (<a href="mailto:daroyac@gmail.com">Carlos</a>, <a href="mailto:ajsanjoaquin@gmail.com">AJ</a>, <a href="mailto:jadcreyes23@gmail.com ">Jullie</a>, <a href="mailto:julessegismundo@gmail.com ">Jules</a>, <a href="mailto:simonclemente113@gmail.com">Simon</a>)
            
             </h3>
 
