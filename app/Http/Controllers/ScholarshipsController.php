@@ -40,7 +40,7 @@ class ScholarshipsController extends Controller
     public function byProgram()
     {
         $var = "Program";
-        $dropdown = Program::pluck('pname', 'pname');
+        $dropdown = Program::where('uid','=',1000000000)->orderBy('pname')->pluck('pname', 'pname');
         $dropdown = $dropdown->unique();
 
         return view('shows.byScholarship', ['dropdown' => $dropdown])->with('var', $var);
@@ -178,7 +178,7 @@ class ScholarshipsController extends Controller
     {
         $scholarship = Scholarship::find($id);
         $college_dropdown = University::orderBy('uname')->pluck('uname', 'uname');
-        $course_dropdown = Program::orderBy('pname')->pluck('pname', 'pname');
+        $course_dropdown = Program::where('uid','=',1000000000)->orderBy('pname')->pluck('pname', 'pname');
 
         return view('shows.editScholarship', ['college_dropdown' => $college_dropdown, 'course_dropdown' => $course_dropdown, 'scholarship' => $scholarship]);
         

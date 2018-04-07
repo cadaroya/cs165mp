@@ -18,7 +18,8 @@ class MatchController extends Controller
     {
         
         $college_dropdown = University::orderBy('uname')->pluck('uname', 'uname');
-        $course_dropdown = Program::orderBy('pname')->pluck('pname', 'pname');
+        // FUTURE NOTE: remove where clause
+        $course_dropdown = Program::where('uid','=',1000000000)->orderBy('pname')->pluck('pname', 'pname');
         return view('pages.match', ['college_dropdown' => $college_dropdown, 'course_dropdown' => $course_dropdown]);
     }
 
