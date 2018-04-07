@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1> by Scholarship (Results) </h1>
+        <h1> Scholarship (Results) </h1>
         @include('incs.scholarshipbuttons')
         @if(count($results) > 0)
             <div class="list-group">

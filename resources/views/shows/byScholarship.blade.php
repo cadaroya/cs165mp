@@ -2,7 +2,7 @@
 
 @section('content')
 	<div class="container">
-	    <h1> by scholarship {{$var}} </h1>
+	    <h1> Scholarships by {{$var}} </h1>
 		<br>
 	    @include('incs.scholarshipbuttons')
 		<br>

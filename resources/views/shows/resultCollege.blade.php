@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-    <h1> by College (Results) </h1>
+    <h1> College (Results) </h1>
     @include('incs.collegebuttons')
 
     

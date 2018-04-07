@@ -17,7 +17,7 @@
                 {{Form::select('age', array(NULL => 'ANY') + array_combine(range(1,100),range(1,100)), null, ['placeholder' => 'Choose ...'])}} </br>
 
                 {{Form::label('year', 'School Year')}}</br>
-                {{Form::select('year', array(NULL => 'ANY') + array_combine(range(2000,2017),range(2000,2017)), null, ['placeholder' => 'Choose ...'])}} </br>
+                {{Form::select('year', array(NULL => 'ANY') + array_combine(range(2000,2100),range(2000,2100)), null, ['placeholder' => 'Choose ...'])}} </br>
 
                 {{Form::label('semester', 'Semester')}}</br>
                 {{Form::select('semester', [1 => '1', 2 => '2', NULL => 'ANY'], null, ['placeholder' => 'Choose ...'])}} </br>

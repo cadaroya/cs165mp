@@ -78,12 +78,8 @@
     </div>
 <!-- Footer -->
     <footer class="panel text-center" style="margin-bottom:0;  border:0;">
-        <div class="panel-body" style ="background-color:#4a4a4a; border:0; color:white;">
-            <p>Made by <a href="/about"> Me</a></p> 
-            <p>See our partner  <a href="/companies"> companies</a></p>
-        </div>
         <div class="panel-footer" style ="background-color:#404040; border:0; color:white;">
-            <p>© 2018</p>
+            <p>Made by <a href="/about">a team of UP students</a> © 2018</p>
         </div>
     </footer>
 
