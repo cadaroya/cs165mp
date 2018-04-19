@@ -33,8 +33,9 @@
                         @else
                             <a href="{{$s->url}}"> <p> Link to their website! </p></a>
                         @endif
+                <!-- Delete        
                         <a href="/scholarships/{{$s->sid}}/edit"> <p> Edit data </p></a>
-                <!-- Delete
+                
                 {!!Form::open(['action' => ['ScholarshipsController@destroy', $s->sid], 'method' => 'POST', 'class' => 'pull-right'])!!}
                     {{Form::hidden('_method', 'DELETE')}}
                     {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}

@@ -127,7 +127,7 @@ class ScholarshipsController extends Controller
 
 
         if(strlen($name) > 0){
-            $results = DB::select('SELECT * FROM Scholarship WHERE sname LIKE CONCAT("%",:sname,"%")', ['sname' => $name]);}
+            $results = DB::select('SELECT * FROM Scholarship WHERE sname LIKE CONCAT("%",:sname,"%") ORDER BY sname', ['sname' => $name]);}
         elseif(strlen($college) > 0)
             $results = DB::select('SELECT A.sid, A.sname, A.sex, A.age, A.year, A.semester, A.level, A.GWA, A.maxgrade, A.cid, A.description, A.url, A.imgdir, A.stipend, A.type
             FROM (University U LEFT JOIN Scholarship_University SU ON U.uid = SU.uid) NATURAL JOIN Scholarship A
@@ -135,7 +135,7 @@ class ScholarshipsController extends Controller
             UNION
             SELECT *
             FROM Scholarship
-            WHERE sid NOT IN (SELECT sid FROM Scholarship_University)', ['uname' => $college]);
+            WHERE sid NOT IN (SELECT sid FROM Scholarship_University) ORDER BY sname', ['uname' => $college]);
         elseif(strlen($program) > 0)
             $results = DB::select('SELECT * FROM
             (SELECT S.sid, S.sname, S.sex, S.age, S.year, S.semester, S.level, S.GWA, S.maxgrade, S.cid, S.description, S.url, S.imgdir, S.stipend, S.type
@@ -149,9 +149,9 @@ class ScholarshipsController extends Controller
             SELECT * 
             FROM Scholarship
             WHERE sid NOT IN (SELECT sid FROM Scholarship_Program)) PROGRAMSEARCH
-            ORDER BY PROGRAMSEARCH.sid;', ['program' => $program, 'program2' => $program]);
+            ORDER BY PROGRAMSEARCH.sname;', ['program' => $program, 'program2' => $program]);
         elseif(strlen($level) > 0)
-            $results = DB::select('SELECT * FROM Scholarship WHERE level LIKE CONCAT("%",:yrlevel,"%") or level IS NULL', ['yrlevel' => $level]);
+            $results = DB::select('SELECT * FROM Scholarship A WHERE level LIKE CONCAT("%",:yrlevel,"%") or level IS NULL ORDER BY A.sname', ['yrlevel' => $level]);
 
         return view('shows.resultScholarship', ['results' => $results]);
     }
@@ -164,7 +164,7 @@ class ScholarshipsController extends Controller
      */
     public function show($id)
     {
-        $scholarship = DB::select('SELECT A.sid, A.sname, A.sex, A.age, A.year, A.semester, A.level, A.GWA, A.maxgrade, A.cid, A.description, A.url, A.imgdir, A.stipend, A.type, C.uname FROM scholarship A left join (scholarship_university B natural join university C) ON A.sid = B.sid where A.sid = :id', ['id' => $id]);
+        $scholarship = DB::select('SELECT A.sid, A.sname, A.sex, A.age, A.year, A.semester, A.level, A.GWA, A.maxgrade, A.cid, A.description, A.url, A.imgdir, A.stipend, A.type, C.uname FROM scholarship A left join (scholarship_university B natural join university C) ON A.sid = B.sid where A.sid = :id ORDER BY A.sname', ['id' => $id]);
         return view('shows.scholarshipTemplate')->with('scholarship',$scholarship);
     }
 
