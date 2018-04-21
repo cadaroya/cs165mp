@@ -38,7 +38,7 @@
                 SKO! supports an abundant list of scholarships from various universities in Metro Manila.
             </h3>
             <br>
-            <a href="/colleges" class="btn btn-default btn-lg" style="font-family: 'Lato', sans-serif; font-weight:bold; background-color:#f27749; color:white;">
+            <a href="/colleges/byName" class="btn btn-default btn-lg" style="font-family: 'Lato', sans-serif; font-weight:bold; background-color:#f27749; color:white;">
                <!-- <span class="glyphicon glyphicon-search"></span> See Current Universities -->
                 <img src="{{ URL::to('/') }}/images/whiteglass.png" class="img-responsive" style="display:inline" alt="whiteglass" width="20" height="20"> 
                     See Current Universities
@@ -53,7 +53,7 @@
                Discover our database of scholarships. View them by category depending on your preferences.
            </h3>
             <br>
-            <a href="/scholarships" class="btn btn-default btn-lg" style="font-family: 'Lato', sans-serif; font-weight:bold; background-color:#f27749; color:white">
+            <a href="/scholarships/byName" class="btn btn-default btn-lg" style="font-family: 'Lato', sans-serif; font-weight:bold; background-color:#f27749; color:white">
                 <!-- <span class="glyphicon glyphicon-search"></span> Browse scholarships -->
                 <img src="{{ URL::to('/') }}/images/whiteglass.png" class="img-responsive" style="display:inline " alt="whiteglass" width="20" height="20"> 
                     Browse Scholarships
@@ -74,12 +74,15 @@
                 <img src="{{ URL::to('/') }}/images/whiteglass.png" class="img-responsive" style="display:inline" alt="glass" width="20" height="20"> 
                     Start Matching!
             </a>
+
+            
         </div>
     </div>
 <!-- Footer -->
     <footer class="panel text-center" style="margin-bottom:0;  border:0;">
         <div class="panel-footer" style ="background-color:#404040; border:0; color:white;">
             <p>Made by <a href="/about">a team of UP students</a> © 2018</p>
+            <p style="color: #edeaec; font-size: 1em;"> Disclaimer: The scholarship list serves only as an aggregator from multiple online sources some of which may have been modified or removed without prior notice </p>
         </div>
     </footer>
 

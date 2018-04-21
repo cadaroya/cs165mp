@@ -12,8 +12,8 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <ul class="nav navbar-nav">
               <li ><a href="/">HOME</a></li>
-              <li ><a href="/scholarships">SCHOLARSHIPS</a></li>
-              <li ><a href="/colleges">COLLEGES</a></li>
+              <li ><a href="/scholarships/byName">SCHOLARSHIPS</a></li>
+              <li ><a href="/colleges/byName">COLLEGES</a></li>
               <li ><a href="/about">ABOUT</a></li>
             </ul>
         </div>

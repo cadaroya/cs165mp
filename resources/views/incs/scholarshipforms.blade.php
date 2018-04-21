@@ -19,7 +19,7 @@
         {{Form::select('level', $dropdown, null, ['class' => 'form-control', 'placeholder' => 'Choose Level...'])}} </br>
     @endif
 
-    {{Form::submit('Submit', ['class' => 'btn btn-default', 'style' => 'background-color:#00aae7; color: white;'])}}
+    {{Form::submit('Search', ['class' => 'btn btn-default', 'style' => 'background-color:#00aae7; color: white;'])}}
     </div>
     {!! Form::close() !!}
     <!-- </div> -->

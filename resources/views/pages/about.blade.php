@@ -9,7 +9,7 @@
             </h2>
             <h3 style="text-align: justify;font-family: 'Roboto', sans-serif;">
                SKO! genuinely aims to help students in their financial endeavors. We built this pillar of information
-               to enlighten everyone, not just students, about the abundance of available scholarships. We provide you with this service
+               to enlighten everyone about the abundance of available scholarships. We provide you with this service
                without strings attached. We only want to make it easier for you to get the scholarship you've always deserved.
            </h3>
             <br>
